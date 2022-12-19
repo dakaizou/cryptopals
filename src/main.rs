@@ -7,8 +7,8 @@ fn main() {
         "{}",
         base64::encode(
             fixed_xor(
-                str_to_vecu8("1c0111001f010100061a024b53535009181c"),
-                str_to_vecu8("686974207468652062756c6c277320657965")
+                &str_to_vecu8("1c0111001f010100061a024b53535009181c"),
+                &str_to_vecu8("686974207468652062756c6c277320657965")
             )
             .unwrap()
         )
@@ -29,7 +29,7 @@ fn str_to_b64(bytes: &str) -> String {
     base64::encode(&str_to_vecu8(bytes))
 }
 
-fn fixed_xor(bytes1: Vec<u8>, bytes2: Vec<u8>) -> Option<Vec<u8>> {
+fn fixed_xor(bytes1: &Vec<u8>, bytes2: &Vec<u8>) -> Option<Vec<u8>> {
     if bytes1.len() != bytes2.len() {
         None
     } else {
